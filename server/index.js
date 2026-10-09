@@ -522,7 +522,11 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`[VoxAI Backend] Server listening on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`[VoxAI Backend] Server listening on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
 
