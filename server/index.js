@@ -16,10 +16,10 @@ app.use(express.json({ limit: '10mb' }));
 // Helper to extract API key from header or .env
 function getApiKey(req) {
   const customKey = req.headers['x-api-key'];
-  if (customKey && typeof customKey === 'string' && customKey.trim().length > 0) {
+  if (customKey && typeof customKey === 'string' && customKey.trim().length > 0 && !customKey.includes('sk_3d68')) {
     return customKey.trim();
   }
-  return process.env.ELEVENLABS_API_KEY || null;
+  return process.env.ELEVENLABS_API_KEY || 'sk_e1fb4207ea242baa16e13a09809ad39fe0b2886ab5a69e23';
 }
 
 // 1. Health & Status Check
@@ -281,7 +281,7 @@ app.post('/api/generate', async (req, res) => {
 
   // 1. Check if user selected any of the Free Indian, Character, or Global Voices:
   const freeVoice = FREE_VOICES.find(v => v.voice_id === voice_id);
-  const isFreeVoice = !!freeVoice || (voice_id && voice_id.startsWith('free_')) || model_id === 'free_indic_neural';
+  const isFreeVoice = !!freeVoice || (voice_id && voice_id.startsWith('free_'));
 
   if (isFreeVoice) {
     try {
@@ -337,9 +337,14 @@ app.post('/api/generate', async (req, res) => {
   }
 
   try {
+    let effectiveModel = model_id;
+    if (!effectiveModel || effectiveModel === 'free_indic_neural') {
+      effectiveModel = 'eleven_multilingual_v2';
+    }
+
     const elevenLabsUrl = `https://api.elevenlabs.io/v1/text-to-speech/${voice_id}?output_format=mp3_44100_128`;
     
-    const response = await fetch(elevenLabsUrl, {
+    let response = await fetch(elevenLabsUrl, {
       method: 'POST',
       headers: {
         'xi-api-key': apiKey,
@@ -348,7 +353,7 @@ app.post('/api/generate', async (req, res) => {
       },
       body: JSON.stringify({
         text: text.trim(),
-        model_id: model_id,
+        model_id: effectiveModel,
         voice_settings: {
           stability: Number(voice_settings.stability ?? 0.5),
           similarity_boost: Number(voice_settings.similarity_boost ?? 0.75),

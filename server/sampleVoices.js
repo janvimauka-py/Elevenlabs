@@ -355,11 +355,11 @@ const FREE_VOICES = [
 // Official ElevenLabs pre-made voices with public preview audio & metadata
 const DEFAULT_VOICES = [
   {
-    voice_id: "21m00Tcm4TlvDq8ikWAM",
-    name: "Rachel",
+    voice_id: "CwhRBWXzGAHq8TQ4Fs17",
+    name: "Roger",
     category: "premade",
-    labels: { accent: "american", description: "calm", age: "young", gender: "female", use_case: "narration" },
-    preview_url: "https://storage.googleapis.com/eleven-public-prod/premade/voices/21m00Tcm4TlvDq8ikWAM/df920e58-6927-4638-9475-b9d5c8052eb1.mp3",
+    labels: { accent: "american", description: "laid-back, casual, resonant", age: "middle aged", gender: "male", use_case: "conversational" },
+    preview_url: "https://storage.googleapis.com/eleven-public-prod/premade/voices/CwhRBWXzGAHq8TQ4Fs17/df920e58-6927-4638-9475-b9d5c8052eb1.mp3",
     high_quality_base_model_ids: ["eleven_multilingual_v2", "eleven_turbo_v2_5"]
   },
   {
