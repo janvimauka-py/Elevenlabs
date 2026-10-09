@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2v20'/><path d='M17 5v14'/><path d='M22 8v8'/><path d='M7 5v14'/><path d='M2 8v8'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="VoxAI — State-of-the-art AI Text-to-Speech Studio powered by ElevenLabs. Convert any text into hyper-realistic human speech." />
+    <title>VoxAI — AI Text-to-Speech Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Fredoka:wght@500;600;700&family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#07152d] text-slate-100 antialiased selection:bg-purple-600 selection:text-white min-h-screen">
+    <noscript>
+      <div style="font-family: sans-serif; padding: 40px; text-align: center; background: #07152d; color: #fff; min-height: 100vh;">
+        <h2>JavaScript is required to run VoxAI Studio</h2>
+        <p>Please enable JavaScript in your browser settings to continue.</p>
+      </div>
+    </noscript>
+
+    <div id="file-protocol-warning" style="display: none; font-family: Inter, system-ui, sans-serif; min-height: 100vh; background: #07152d; color: #f8fafc; padding: 40px 20px; box-sizing: border-box; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <div style="max-width: 600px; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 24px; padding: 36px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);">
+        <div style="font-size: 42px; margin-bottom: 12px;">🎙️</div>
+        <h1 style="font-size: 24px; font-weight: 800; color: #38bdf8; margin: 0 0 12px;">VoxAI Dubbing Studio</h1>
+        <p style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 24px;">
+          This web application must be opened through the local development server, not directly from file storage (<code>file:///</code>).
+        </p>
+        <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; padding: 18px; text-align: left; font-size: 14px; margin-bottom: 24px;">
+          <strong style="color: #38bdf8; display: block; margin-bottom: 8px;">How to start the app:</strong>
+          <ol style="margin: 0; padding-left: 20px; color: #e2e8f0; line-height: 1.8;">
+            <li>Double-click the <code>start.bat</code> file in your project folder, <strong>or</strong></li>
+            <li>In your terminal, run: <code style="background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #7dd3fc;">npm run dev</code></li>
+            <li>Then open: <a href="http://localhost:5173" style="color: #38bdf8; text-decoration: underline; font-weight: bold;">http://localhost:5173</a></li>
+          </ol>
+        </div>
+        <a href="http://localhost:5173" style="display: inline-block; background: #38bdf8; color: #082f49; font-weight: 800; padding: 14px 32px; border-radius: 14px; text-decoration: none; font-size: 15px; box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.5);">
+          Open http://localhost:5173
+        </a>
+      </div>
+    </div>
+    <script>
+      if (window.location.protocol === 'file:') {
+        var warn = document.getElementById('file-protocol-warning');
+        if (warn) warn.style.display = 'flex';
+      }
+    </script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
